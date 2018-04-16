@@ -1,0 +1,21 @@
+{
+  "name": "serverless_ulr_shortener",
+  "version": "1.0.1",
+  "description": "Lightweight URL shortener",
+  "scripts": {
+    "start": "serverless deploy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jpdentone/serverless_ulr_shortener.git"
+  },
+  "author": "JP Dentone",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jpdentone/serverless_ulr_shortener/issues"
+  },
+  "homepage": "https://github.com/jpdentone/serverless_ulr_shortener#readme",
+  "dependencies": {
+    "aws-sdk": "^2.224.1"
+  }
+}
