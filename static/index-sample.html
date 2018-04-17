@@ -6,8 +6,8 @@
   <title>URL Shortener</title>
   <link rel="icon" href="assets/favicon.ico">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
-  <link href="assets/paper.css" rel="stylesheet">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+  <link href="assets/css/paper.css" rel="stylesheet">
+  <link href="assets/css/jquery.toastmessage.css" rel="stylesheet">
 </head>
 <style>
   * {
@@ -17,48 +17,31 @@
   #message {
     display: none;
   }
+
+  #initiallyHiddenBtn {
+    display: none;
+  }
+
+  .alert{
+      display: none;
+  }
 </style>
 <body>
   <div class="row flex-center">
     <div class="col-8 col">
       <h2>Simplify your links</h2>
-      <form action="<pastehere>/">
+      <form action="<pastehere>">
         <div class="form-group">
           <input class="input-block" name="url" type="url" id="url"  autocomplete="off" placeholder="Original URL Here"required>
         </div>
         <div id="message" class="alert alert-primary"></div>
         <input class="btn btn-success" type="submit" value="Shorten URL">
+        <button id="initiallyHiddenBtn" class="btn btn-success" onclick="copyToClipboard('#message'); showAlert()">CopyURL</button>
       </form>
     </div>
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script>
-    $('form').submit(function (event) {
-      event.preventDefault()
-      addMessage('...')
-      shortenLink(event.target.action, event.target.url.value)
-    })
-
-    function shortenLink (apiUrl, longUrl) {
-      $.ajax(apiUrl, {
-        type : 'POST', 
-        data: JSON.stringify({url: longUrl})})
-        .done(function (responseJSON) {
-          var shortUrl = window.location.protocol + '//' + window.location.host + '/' + responseJSON.path
-          addMessage(shortUrl)
-        })
-        .fail(function (data) {
-          if (data.status === 400) {
-            addMessage(data.responseJSON.message)
-          } else {
-            addMessage('an unexpected error occurred')
-          }
-        })
-    }
-
-    function addMessage (text) {
-      $('#message').text(text).show()
-    }
-  </script>
+  <script src="assets/js/jquery.toastmessage.js"></script>
+  <script src="assets/js/custom.js"></script>
 </body>
 </html>
