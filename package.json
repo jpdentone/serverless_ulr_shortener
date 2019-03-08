@@ -16,6 +16,6 @@
   },
   "homepage": "https://github.com/jpdentone/serverless_ulr_shortener#readme",
   "dependencies": {
-    "aws-sdk": "^2.224.1"
+    "aws-sdk": "^2.417.0"
   }
 }
